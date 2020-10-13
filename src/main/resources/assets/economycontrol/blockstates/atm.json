@@ -1,0 +1,60 @@
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "model": "economycontrol:atm"
+    },
+    "variants":
+    {
+        "inventory": 
+        {
+            "model": "economycontrol:atm",
+            "transform": 
+            {
+                "gui": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, 0]
+                },
+                "firstperson": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, -0.25]
+                },
+                "firstperson_lefthand": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, 0]
+                },
+                "thirdperson": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, -0.25]
+                },
+                "thirdperson_lefthand": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, 0]
+                },
+                "ground": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, 0]
+                },
+                "fixed": 
+                {
+                    "scale": 0.5,
+                    "translation": [0, -0.25, 0],
+                    "rotation": {"y": 180}
+                }
+            }
+        },
+        "normal": [{}],
+        "facing": {
+            "north": {},
+            "west": { "y": 270 },
+            "south": { "y": 180 },
+            "east": { "y": 90 }
+        }
+    }
+}

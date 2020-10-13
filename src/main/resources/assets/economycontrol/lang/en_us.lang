@@ -1,0 +1,12 @@
+itemGroup.economycontrol=Economy Control
+tile.economycontrol.atm.name=ATM
+item.economycontrol.money.cent_1.name=Penny (1 cent)
+item.economycontrol.money.cent_5.name=Nickel (5 cents)
+item.economycontrol.money.cent_10.name=Dime (10 cents)
+item.economycontrol.money.cent_25.name=Quarter (25 cents)
+item.economycontrol.money.dollar_1.name=$1 (1 Dollar)
+item.economycontrol.money.dollar_5.name=$5 (5 Dollars)
+item.economycontrol.money.dollar_10.name=$10 (10 Dollars)
+item.economycontrol.money.dollar_20.name=$20 (20 Dollars)
+item.economycontrol.money.dollar_50.name=$50 (50 Dollars)
+item.economycontrol.money.dollar_100.name=$100 (100 Dollars)

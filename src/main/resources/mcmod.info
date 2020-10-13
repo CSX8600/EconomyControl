@@ -1,0 +1,16 @@
+[
+{
+  "modid": "economycontrol",
+  "name": "Economy Control",
+  "description": "Take control of your economy by having multiple bank accounts. Sell things! Tax things! Employ people!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["CSX8600"],
+  "credits": "Icons made by Freepik from www.flaticon.com",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
