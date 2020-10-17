@@ -49,6 +49,11 @@ public class ItemMoney extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
+		if (stack.getMetadata() > MoneyTypes.values().length)
+		{
+			return String.format("item.%s.money.%s", EconomyControl.MODID, MoneyTypes.Penny.getName());
+		}
+		
 		MoneyTypes moneyType = MoneyTypes.values()[stack.getMetadata()];
 		return String.format("item.%s.money.%s", EconomyControl.MODID, moneyType.getName());
 	}

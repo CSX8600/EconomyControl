@@ -31,7 +31,7 @@ public class EconomyControl
 {
     public static final String MODID = "economycontrol";
     public static final String NAME = "Economy Control";
-    public static final String VERSION = "0.0.1";
+    public static final String VERSION = "0.1.0b";
     public static final CreativeTabs TAB = new CreativeTabs("economycontrol") {
 		
 		@Override

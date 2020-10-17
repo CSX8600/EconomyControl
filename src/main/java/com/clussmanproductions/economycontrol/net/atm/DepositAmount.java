@@ -190,7 +190,7 @@ public class DepositAmount implements IMessage {
 			{
 				ItemStack stackInSlot = player.inventory.getStackInSlot(i);
 				
-				if (stackInSlot != null && stackInSlot.getItem() == ModItems.money)
+				if (stackInSlot != null && stackInSlot.getItem() == ModItems.money && stackInSlot.getMetadata() < MoneyTypes.values().length)
 				{
 					MoneyTypes type = MoneyTypes.values()[stackInSlot.getMetadata()];
 					map.get(type).add(stackInSlot);

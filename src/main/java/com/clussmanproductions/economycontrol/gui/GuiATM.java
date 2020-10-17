@@ -1282,7 +1282,7 @@ public class GuiATM extends GuiScreen {
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
 				ItemStack stackInSlot = player.inventory.getStackInSlot(i);
-				if (stackInSlot != null && stackInSlot.getItem() == ModItems.money)
+				if (stackInSlot != null && stackInSlot.getItem() == ModItems.money && stackInSlot.getMetadata() < MoneyTypes.values().length)
 				{
 					MoneyTypes moneyType = MoneyTypes.values()[stackInSlot.getMetadata()];
 					amountAvailable += (moneyType.getValue() * stackInSlot.getCount());

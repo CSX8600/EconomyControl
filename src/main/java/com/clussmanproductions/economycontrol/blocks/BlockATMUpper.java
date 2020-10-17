@@ -65,4 +65,19 @@ public class BlockATMUpper extends Block {
 		
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
+
+	@Override
+	public float getAmbientOcclusionLightValue(IBlockState state) {
+		return 0;
+	}
+	
+	@Override
+	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
 }
