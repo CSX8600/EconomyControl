@@ -12,6 +12,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 
 version = "0.1.0b"
+version = "0.1.0"
 group = "com.clussmanproductions.economycontrol" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "economycontrol"
 

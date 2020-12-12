@@ -19,6 +19,9 @@ import com.clussmanproductions.economycontrol.net.atm.TransferRetrieveBankAccoun
 import com.clussmanproductions.economycontrol.net.atm.TransferRetrieveBankAccountsResponse;
 import com.clussmanproductions.economycontrol.net.atm.Withdrawal;
 import com.clussmanproductions.economycontrol.net.atm.WithdrawalError;
+import com.clussmanproductions.economycontrol.net.financemanagement.GetFinanceContext;
+import com.clussmanproductions.economycontrol.net.financemanagement.GetFinanceContextResponse;
+import com.clussmanproductions.economycontrol.net.taggingstation.ValueUpdated;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -62,5 +65,8 @@ public class PacketHandler {
 		INSTANCE.registerMessage(InitializeRetrieveBankAccountsResponse.Handler.class, InitializeRetrieveBankAccountsResponse.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(RetrieveHistories.Handler.class, RetrieveHistories.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(RetrieveHistoriesResponse.Handler.class, RetrieveHistoriesResponse.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(ValueUpdated.Handler.class, ValueUpdated.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(GetFinanceContext.Handler.class, GetFinanceContext.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(GetFinanceContextResponse.Handler.class, GetFinanceContextResponse.class, nextID(), Side.CLIENT);
 	}
 }

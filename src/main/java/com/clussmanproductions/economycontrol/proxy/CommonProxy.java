@@ -13,6 +13,7 @@ import com.clussmanproductions.economycontrol.gui.GuiProxy;
 import com.clussmanproductions.economycontrol.item.ItemATM;
 import com.clussmanproductions.economycontrol.net.PacketHandler;
 import com.clussmanproductions.economycontrol.tile.ATMTileEntity;
+import com.clussmanproductions.economycontrol.tile.SecurityTaggingStationTileEntity;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -49,6 +50,7 @@ public class CommonProxy {
 		
 		// No good way to auto-register TEs :(
 		GameRegistry.registerTileEntity(ATMTileEntity.class, new ResourceLocation(EconomyControl.MODID, "atm"));
+		GameRegistry.registerTileEntity(SecurityTaggingStationTileEntity.class, new ResourceLocation(EconomyControl.MODID, "security_tagging_station"));
 	}
 	
 	
@@ -120,10 +122,19 @@ public class CommonProxy {
 	public static class Permissions
 	{
 		public static final String breakAnyATM = "economycontrol.atm.breakAny";
+		public static final String manageCompany = "economycontrol.financemanagement.canManageCompany";
+		public static final String createCompany = "economycontrol.financemanagement.canCreateCompany";
+		public static final String manageGovernment = "economycontrol.financemanagement.canManageGovernment";
+		public static final String createGovernment = "economycontrol.financemanagement.canCreateGovernment";
+		
 		
 		public static void registerPermissions()
 		{
 			PermissionAPI.registerNode(breakAnyATM, DefaultPermissionLevel.OP, "Can break any ATM regardless of whether or not they own it (owners can always break their own ATMs)");
+			PermissionAPI.registerNode(manageCompany, DefaultPermissionLevel.ALL, "Can use the Company button in the Finance Management window");
+			PermissionAPI.registerNode(manageCompany, DefaultPermissionLevel.ALL, "Can use the Company button and can create a Company in the Finance Management window");
+			PermissionAPI.registerNode(manageGovernment, DefaultPermissionLevel.NONE, "Can use the Government button in the Finance Management window");
+			PermissionAPI.registerNode(createGovernment, DefaultPermissionLevel.NONE, "Can use the Government button and can create a Government in the Finance Management window");
 		}
 	}
 }

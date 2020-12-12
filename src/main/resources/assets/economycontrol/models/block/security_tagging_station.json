@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "economycontrol:blocks/security_tagging_station_top",
+    "down": "economycontrol:blocks/security_tagging_station_bottom",
+    "up": "economycontrol:blocks/security_tagging_station_top",
+    "east": "economycontrol:blocks/security_tagging_station_side",
+    "west": "economycontrol:blocks/security_tagging_station_side",
+    "north": "economycontrol:blocks/security_tagging_station_side",
+    "south": "economycontrol:blocks/security_tagging_station_side"
+  }
+}

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.clussmanproductions.economycontrol.data.bankaccount.BankAccountData;
 import com.clussmanproductions.economycontrol.data.bankaccount.BankAccountHistoryData;
 import com.clussmanproductions.economycontrol.data.bankaccount.BankAccountPlayerData;
+import com.clussmanproductions.economycontrol.data.government.GovernmentData;
 import com.clussmanproductions.economycontrol.item.ItemMoney.MoneyTypes;
 import com.clussmanproductions.economycontrol.proxy.CommonProxy;
 
@@ -31,7 +32,7 @@ public class EconomyControl
 {
     public static final String MODID = "economycontrol";
     public static final String NAME = "Economy Control";
-    public static final String VERSION = "0.1.0b";
+    public static final String VERSION = "0.1.0";
     public static final CreativeTabs TAB = new CreativeTabs("economycontrol") {
 		
 		@Override
@@ -82,6 +83,8 @@ public class EconomyControl
 		file.mkdirs();
 		file = new File(file, "../BankAccountHistory");
 		file.mkdirs();
+		file = new File(file, "../Governments");
+		file.mkdirs();
 		
 		Calendar cal = Calendar.getInstance();
 		BankAccountHistoryData.earliestYear = cal.get(Calendar.YEAR);
@@ -116,5 +119,6 @@ public class EconomyControl
 		BankAccountData.clearCaches();
 		BankAccountPlayerData.clearCaches();
 		BankAccountHistoryData.clearCaches();
+		GovernmentData.clearCaches();
 	}
 }

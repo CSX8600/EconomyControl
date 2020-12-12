@@ -62,7 +62,6 @@ public class BankAccountPlayerData extends WorldSavedData
 	public static class BankAccountPlayerPair implements INBTSerializable<NBTTagCompound>
 	{
 		private String bankAccountNumber;
-		private BankAccountData bankAccount;
 		private BankAccountShareTypes shareType;
 
 		public String getBankAccountNumber() {
@@ -71,14 +70,6 @@ public class BankAccountPlayerData extends WorldSavedData
 
 		public void setBankAccountNumber(String bankAccountNumber) {
 			this.bankAccountNumber = bankAccountNumber;
-		}
-
-		public BankAccountData getBankAccount() {
-			return bankAccount;
-		}
-
-		public void setBankAccount(BankAccountData bankAccount) {
-			this.bankAccount = bankAccount;
 		}
 
 		public BankAccountShareTypes getShareType() {
@@ -113,9 +104,9 @@ public class BankAccountPlayerData extends WorldSavedData
 	
 	// Cache
 	private static HashMap<String, BankAccountPlayerData> playerDatasByPlayer = new HashMap<>();
-	private static HashMap<String, List<BankAccountData>> personalBankAccountsByPlayer = new HashMap<>();
+	private static HashMap<String, List<String>> personalBankAccountsByPlayer = new HashMap<>();
 	
-	public static List<BankAccountData> getPersonalBankAccountsByPlayer(String player, World world)
+	public static List<String> getPersonalBankAccountsByPlayer(String player, World world)
 	{
 		if (!personalBankAccountsByPlayer.containsKey(player))
 		{
@@ -139,27 +130,18 @@ public class BankAccountPlayerData extends WorldSavedData
 		// Post init check/populate dictionaries
 		for(BankAccountPlayerPair pair : bankAccountPlayer.bankAccountPlayerPairs)
 		{
-			if (pair.getBankAccount() == null)
+			BankAccountData bankAccountData = BankAccountData.getBankAccountByNumber(pair.getBankAccountNumber(), world);
+			if (bankAccountData != null)
 			{
-				BankAccountData bankAccount = BankAccountData.getBankAccountByNumber(pair.getBankAccountNumber(), world);
-				
-				if (bankAccount != null)
-				{
-					pair.setBankAccount(BankAccountData.getBankAccountByNumber(pair.getBankAccountNumber(), world));
-				}
-			}
-			
-			if (pair.getBankAccount() != null)
-			{
-				if (pair.getBankAccount().getBankAccountType() == BankAccountTypes.PersonalChecking ||
-						pair.getBankAccount().getBankAccountType() == BankAccountTypes.PersonalSavings)
+				if (bankAccountData.getBankAccountType() == BankAccountTypes.PersonalChecking ||
+						bankAccountData.getBankAccountType() == BankAccountTypes.PersonalSavings)
 				{
 					if (!personalBankAccountsByPlayer.containsKey(player))
 					{
 						personalBankAccountsByPlayer.put(player, new ArrayList<>());
 					}
 					
-					personalBankAccountsByPlayer.get(player).add(pair.getBankAccount());
+					personalBankAccountsByPlayer.get(player).add(pair.getBankAccountNumber());
 				}
 			}
 		}		
@@ -185,7 +167,8 @@ public class BankAccountPlayerData extends WorldSavedData
 			playerData.bankAccountPlayerPairs.add(pair);
 			playerData.markDirty();
 			
-			BankAccountTypes type = pair.getBankAccount().getBankAccountType();
+			BankAccountData bankAccount = BankAccountData.getBankAccountByNumber(pair.getBankAccountNumber(), world);
+			BankAccountTypes type = bankAccount.getBankAccountType();
 			if (type == BankAccountTypes.PersonalChecking || type == BankAccountTypes.PersonalSavings)
 			{
 				if (!personalBankAccountsByPlayer.containsKey(player))
@@ -193,7 +176,7 @@ public class BankAccountPlayerData extends WorldSavedData
 					personalBankAccountsByPlayer.put(player, new ArrayList<>());
 				}
 				
-				personalBankAccountsByPlayer.get(player).add(pair.getBankAccount());
+				personalBankAccountsByPlayer.get(player).add(pair.getBankAccountNumber());
 			}
 		}
 	}

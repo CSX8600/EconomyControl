@@ -1,5 +1,6 @@
 package com.clussmanproductions.economycontrol.net.atm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.clussmanproductions.economycontrol.data.bankaccount.BankAccountData;
@@ -43,7 +44,12 @@ public class TransferRetrieveBankAccounts implements IMessage {
 				EntityPlayerMP player = ctx.getServerHandler().player;
 				World world = player.world;
 				
-				List<BankAccountData> personalAccounts = BankAccountPlayerData.getPersonalBankAccountsByPlayer(player.getName(), world);
+				List<BankAccountData> personalAccounts = new ArrayList<>();
+				for(String bankAccountNumber : BankAccountPlayerData.getPersonalBankAccountsByPlayer(player.getName(), world))
+				{
+					personalAccounts.add(BankAccountData.getBankAccountByNumber(bankAccountNumber, world));
+				}
+				
 				TransferRetrieveBankAccountsResponse response = new TransferRetrieveBankAccountsResponse();
 				response.currentBankAccount = message.currentBankAccountNumber;
 				response.bankAccounts = personalAccounts;

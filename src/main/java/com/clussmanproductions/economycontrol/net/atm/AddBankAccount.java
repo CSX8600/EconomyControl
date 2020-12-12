@@ -45,7 +45,6 @@ public class AddBankAccount implements IMessage
 				BankAccountData savedData = BankAccountData.addBankAccount(message.bankAccount, world);
 				BankAccountPlayerPair newPair = new BankAccountPlayerPair();
 				newPair.setBankAccountNumber(savedData.getBankAccountNumber());
-				newPair.setBankAccount(savedData);
 				newPair.setShareType(BankAccountShareTypes.Owner);
 				BankAccountPlayerData.addBankAccountPlayerPair(ctx.getServerHandler().player.getName(), newPair, world);
 			}
